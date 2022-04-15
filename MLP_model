@@ -1,0 +1,34 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import neighbors
+from sklearn import metrics
+from sklearn import model_selection
+from sklearn import tree
+from sklearn import preprocessing
+from sklearn.decomposition import PCA
+from sklearn import neural_network
+
+df = pd.read_csv("https://github.com/andvise/DataAnalyticsDatasets/blob/6d5738101d173b97c565f143f945dedb9c42a400/dm_assignment2/sat_dataset_train.csv?raw=true")
+
+df = df.dropna(axis=1)
+df = df.replace([np.inf], 10000000000000000)
+df = df.replace([-np.inf], -10000000000000000)
+
+(train_features,
+ test_features, 
+ train_labels, 
+ test_labels) = model_selection.train_test_split(features,
+                                 labels, 
+                                 test_size = 0.3,
+                                 random_state = 1)
+                                 
+scaler = preprocessing.MinMaxScaler()
+scaler.fit(train_features)
+
+scaled_train_features = scaler.transform(train_features)
+scaled_test_features = scaler.transform(test_features)
+
+mlp = neural_network.MLPClassifier()
+
+mlp.fit(scaled_train_features, train_labels)
