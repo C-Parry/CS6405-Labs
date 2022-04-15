@@ -1,13 +1,3 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn import neighbors
-from sklearn import metrics
-from sklearn import model_selection
-from sklearn import tree
-from sklearn import preprocessing
-from sklearn.decomposition import PCA
-from sklearn import neural_network
 
 df = pd.read_csv("https://github.com/andvise/DataAnalyticsDatasets/blob/6d5738101d173b97c565f143f945dedb9c42a400/dm_assignment2/sat_dataset_train.csv?raw=true")
 
